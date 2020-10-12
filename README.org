@@ -1,0 +1,14 @@
+#+TITLE: Readme
+ This package exposes the following functions:
+
++ [[#adj_to_probTrans][~adj_to_probTrans.Rd~]]
++ ~create_sparse_diag_scaling_mat.Rd~
++ ~create_sparse_diag_sc_inv_mat.Rd~
++ ~power_walk_prob_trans.Rd~
++ ~power_walk_stationary_point.Rd~
++ ~random_surfer_stationary.Rd~
+
+* Adjacency to Probability Transition Matrix
+:PROPERTIES:
+:CUSTOM_ID: adj_to_probTrans
+:END:
