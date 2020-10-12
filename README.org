@@ -1,14 +1,88 @@
 #+TITLE: Readme
  This package exposes the following functions:
 
-+ [[#adj_to_probTrans][~adj_to_probTrans.Rd~]]
++ ~adj_to_probTrans.Rd~
+  - [[*Adjacency to Probability Transition Matrix][Adjacency to Probability Transition Matrix]]
 + ~create_sparse_diag_scaling_mat.Rd~
+  - [[#create_sparse_diag_scaling_mat][Create Sparse Diagonal Scaling Matrix]]
 + ~create_sparse_diag_sc_inv_mat.Rd~
+  - [[*Power Walk Stationary Point][Power Walk Stationary Point]]
 + ~power_walk_prob_trans.Rd~
+  - [[#power_walk_stationary_point.Rd][Power Walk Stationary Point]]
 + ~power_walk_stationary_point.Rd~
+  - [[*Random Surfer Stationary Point][Random Surfer Stationary Point]]
 + ~random_surfer_stationary.Rd~
+  - [[#random_surfer-trans-prob][Random Surfer Transition Probability Matrix]]
 
-* Adjacency to Probability Transition Matrix
+* Dependencies
+
+- ~Matrix~
+- ~tidyverse~
+  + possibly
+* Usage
+
+#+begin_src
+library(devtools)
+library(Matrix)
+library(tidyverse) # Maybe, TODO check if this is used, I don't think it is
+
+  if (require("PageRank")) {
+      library(PageRank)
+    }else{
+      devtools::install_github("ryangreenup/PageRank")
+      library(PageRank)
+    }
+#+end_src
+
+* Functions
+** Adjacency to Probability Transition Matrix
 :PROPERTIES:
 :CUSTOM_ID: adj_to_probTrans
 :END:
+
+Takes an adjacency matrix (column to row) and returns a matrix with each column
+scaled to 1, this matrix indicates the probability of travelling from the
+column-vertex to the row-vertex during a random walk.
+
+** Create Sparse Diagonal Scaling Matrix
+:PROPERTIES:
+:CUSTOM_ID: create_sparse_diag_scaling_mat
+:END:
+
+Returns ~diag(colSum(A))~ as a ~sparseMatrix~.
+
+** Create Sparse Diagonal (Inverse) Scaling Matrix
+:PROPERTIES:
+:CUSTOM_ID: create_sparse_diag_sc_inv_mat
+:END:
+
+Returns ~diag(colSum(A))~ as a ~sparseMatrix~.
+
+** Random Surfer
+*** Random Surfer Transition Probability Matrix
+:PROPERTIES:
+:CUSTOM_ID: random_surfer-trans-prob
+:END:
+Returns the Stationary Point of the /Random Surfer/ PageRank method.
+**** TODO Why is the name of this function wrong?
+
+*** Random Surfer Stationary Point
+:PROPERTIES:
+:CUSTOM_ID: random_surfer_stationary.Rd
+:END:
+Returns the /Probability Transition Matrix/ corresponding to the /Random Surfer/ PageRank method.
+** Power Walk
+*** Power Walk Probability Transition Matrix
+:PROPERTIES:
+:CUSTOM_ID: power_walk_prob_trans
+:END:
+
+Returns the /Probability Transition Matrix/ corresponding to the /Power Walk/ PageRank method.
+
+*** Power Walk Stationary Point
+:PROPERTIES:
+:CUSTOM_ID: power_walk_stationary_point.Rd
+:END:
+
+Returns the Stationary Point of the /Power Walk/ PageRank method.
+
